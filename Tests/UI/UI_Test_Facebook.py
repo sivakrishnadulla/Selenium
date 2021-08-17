@@ -8,7 +8,7 @@ import time
 import yaml
 
 with open('../TestData/F_cred.yaml', 'r') as f_file:
-    f_creds = yaml.load(f_file)
+    f_creds = yaml.full_load(f_file)
 
 cMethods = Commonfunctions()
 F_objects = FacebookLogin()

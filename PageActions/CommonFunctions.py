@@ -75,12 +75,21 @@ class Commonfunctions:
         time.sleep(3)
         self.browser.find_element(By.XPATH, x_path).click()
 
-    def alerts_browser(self):
+    def alerts_browser_accept(self):
         """
 
         :return:
         """
-        self.browser.switch_to.alert.accept()
+        alert_object = self.browser.switch_to.alert
+        alert_object.accept()
+
+    def alerts_browser_dismiss(self):
+        """
+
+        :return:
+        """
+        alert_obj = self.browser.switch_to.alert
+        alert_obj.dismiss()
 
     def close_browser(self):
         """
@@ -89,7 +98,7 @@ class Commonfunctions:
         """
         self.browser.close()
 
-    def move_element(self, xpath, x, y):
+    def move_element(self, xpath, x_offset, y_offset):
         """
 
         :param xpath:
@@ -97,11 +106,22 @@ class Commonfunctions:
         """
         time.sleep(2)
         move_action = ActionChains(self.browser)
-        move_action.click_and_hold(xpath).move_by_offset(x, y).release().perform()
+        move_action.click_and_hold(xpath).move_by_offset(x_offset, y_offset).release().perform()
 
     def scrollDown(self):
+        """
+
+        :return:
+        """
 
         ActionChains(self.browser).send_keys(Keys.PAGE_DOWN).perform()
+
+    def scrollUp(self):
+        """
+
+        :return:
+        """
+        ActionChains(self.browser).send_keys(Keys.PAGE_UP).perform()
 
     def drag_and_drop(self, source, target):
         """
@@ -141,10 +161,33 @@ class Commonfunctions:
         action_chains = ActionChains(self.browser)
         action_chains.double_click(xpath).perform()
 
-    def slider_element(self, source, xoffset, yoffset):
+    def slider_element(self, source, x_offset, y_offset):
         """
 
         :return:
         """
         acions_chains = ActionChains(self.browser)
-        acions_chains.drag_and_drop_by_offset(source, xoffset, yoffset).perform()
+        acions_chains.drag_and_drop_by_offset(source, x_offset, y_offset).perform()
+
+    def switch_to_frame(self, xpath):
+        """
+            This function will do -
+                - switch the frame
+        :return:
+        """
+        try:
+            self.browser.switch_to.frame(self.browser.find_element_by_xpath(xpath))
+        except NoSuchElementException:
+            raise Exception("No element found")
+
+    def window_handler(self, arg):
+        """
+
+        :param arg:
+        :return:
+        """
+        self.browser.window_handles
+        change_window = self.browser.window_handles[arg]
+        self.browser.switch_to.window(change_window)
+
+
