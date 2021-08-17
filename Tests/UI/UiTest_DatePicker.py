@@ -22,6 +22,15 @@ time.sleep(2)
 
 cMethods.click_on_button(search_objects.datepicker_xpath)
 month_year_title = cMethods.browser.find_element(By.CLASS_NAME, "ui-datepicker-title").text
+dates_in_month = cMethods.browser.find_elements(By.XPATH, '//table[@class="ui-datepicker-calendar"]//a')
+
+for dateitem in dates_in_month:
+    date = dateitem.text
+    print(date, end=",")
+    if date == '20':
+        dateitem.click()
+        break
+
 print(month_year_title) #August 2021
 month = month_year_title.split(" ")[0].strip()
 year = month_year_title.split(" ")[1].strip()
@@ -38,8 +47,5 @@ while month == "June" and year == "2020":
 cMethods.browser.find_element(By.XPATH, '//a[text()="28"]')
 
 time.sleep(3)
-
-
-
 
 cMethods.close_browser()

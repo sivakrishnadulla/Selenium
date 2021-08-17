@@ -1,5 +1,5 @@
 """
-
+created a class for differents methods to use
 """
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -45,23 +45,23 @@ class Commonfunctions:
     def minimize_window(self):
         """
 
-        :return:
+        :return: it will minimize the browser
         """
         self.browser.minimize_window()
 
     def get_page_title(self):
         """
 
-        :return:
+        :return: to print the title of particular url we can use these method
         """
         return self.browser.title
 
     def click_on_inputs_for_send_keys(self, x_path, value):
         """
 
-        :param x_path:
-        :param value:
-        :return:
+        :param x_path: it is used to perform click operation where the values has to be send
+        :param value: give input as per requirement
+        :return: these method will firstly click on xpath and then takes the inputs from value
         """
         time.sleep(3)
         self.browser.find_element(By.XPATH, x_path).send_keys(value)
@@ -69,7 +69,7 @@ class Commonfunctions:
     def click_on_button(self, x_path):
         """
 
-        :param x_path:
+        :param x_path: to click on particular object here xpath is used
         :return:
         """
         time.sleep(3)
@@ -78,7 +78,7 @@ class Commonfunctions:
     def alerts_browser_accept(self):
         """
 
-        :return:
+        :return: when any alerts are occured these method will accept that alert and make automation continues
         """
         alert_object = self.browser.switch_to.alert
         alert_object.accept()
@@ -86,7 +86,7 @@ class Commonfunctions:
     def alerts_browser_dismiss(self):
         """
 
-        :return:
+        :return:these method will dismiss the alert and continues automation
         """
         alert_obj = self.browser.switch_to.alert
         alert_obj.dismiss()
@@ -94,15 +94,17 @@ class Commonfunctions:
     def close_browser(self):
         """
 
-        :return:
+        :return: it will completely close the browser
         """
         self.browser.close()
 
     def move_element(self, xpath, x_offset, y_offset):
         """
 
-        :param xpath:
-        :return:
+        :param xpath: first object is gets clicked and holds by using xpath then moves in x-direction using
+        x_offset and moves in y-direction using y_offset
+        :return:it will release in that particular location after moving in x and y directions
+        perform() will work as all these steps are done by perform method only
         """
         time.sleep(2)
         move_action = ActionChains(self.browser)
@@ -111,7 +113,7 @@ class Commonfunctions:
     def scrollDown(self):
         """
 
-        :return:
+        :return: it will scroll down the page
         """
 
         ActionChains(self.browser).send_keys(Keys.PAGE_DOWN).perform()
@@ -119,15 +121,16 @@ class Commonfunctions:
     def scrollUp(self):
         """
 
-        :return:
+        :return: it will scrollup the page
         """
         ActionChains(self.browser).send_keys(Keys.PAGE_UP).perform()
 
     def drag_and_drop(self, source, target):
         """
 
-        :param xpath:
-        :return:
+        :param source: object that has to move from place to another place
+        :param target: object where the source object will come and land
+        :return: the source object will get dragged to target object
         """
         action_chains = ActionChains(self.browser)
         action_chains.drag_and_drop(source, target).perform()
@@ -135,19 +138,19 @@ class Commonfunctions:
     def click_hold_move(self, source, target):
         """
 
-        :param source:
-        :param target:
-        :return:
+        :param source: source object will get clicked and hold
+        :param target: that source object will move to target element location
+        :return: releases the source object into target location
         """
 
         action_chains = ActionChains(self.browser)
         action_chains.click_and_hold(source).move_to_element(target).release().perform()
 
-    def change_window_tab(self, tab_number):
+    def window_handler(self, tab_number):
         """
 
-        :param tab_number:
-        :return:
+        :param tab_number: number of tabs that wanted to be swithched. it is counted from left side
+        :return: it will switch from one tab to different tab based on tab_number
         """
         change_window = self.browser.window_handles[tab_number]
         self.browser.switch_to.window(change_window)
@@ -155,8 +158,8 @@ class Commonfunctions:
     def double_click(self, xpath):
         """
 
-        :param xpath:
-        :return:
+        :param xpath: the object where the double click operation has to be done
+        :return: it will click two times in the particular object or element
         """
         action_chains = ActionChains(self.browser)
         action_chains.double_click(xpath).perform()
@@ -164,7 +167,8 @@ class Commonfunctions:
     def slider_element(self, source, x_offset, y_offset):
         """
 
-        :return:
+        :return: source object will get dragged and dropped in x and y directions
+        in these case it is slider only in one direction it will get dragged
         """
         acions_chains = ActionChains(self.browser)
         acions_chains.drag_and_drop_by_offset(source, x_offset, y_offset).perform()
@@ -180,14 +184,6 @@ class Commonfunctions:
         except NoSuchElementException:
             raise Exception("No element found")
 
-    def window_handler(self, arg):
-        """
 
-        :param arg:
-        :return:
-        """
-        self.browser.window_handles
-        change_window = self.browser.window_handles[arg]
-        self.browser.switch_to.window(change_window)
 
 
