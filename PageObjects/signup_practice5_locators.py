@@ -32,6 +32,8 @@ class SearchEvents:
     searchbar_xpath = '//input[@id="Wikipedia1_wikipedia-search-input"]'
     searchbutton_xpath = '//input[@class="wikipedia-search-button"]'
     datepicker_xpath = '//input[@id="datepicker"]'
+    no_of_dates_xpath = '//table[@class="ui-datepicker-calendar"]//a'
+    datepicker_title_xpath = '//div[@class="ui-datepicker-title"]'
     prev_calender_xpath = '//a[@data-handler="prev"]'
     next_calender_xpath = '//a[@data-handler="next"]'
     Alert_btn_click_xpath = '//button[text()="Click Me"]'
@@ -40,11 +42,11 @@ class DropdownEvents:
     """
     locators for dropdown objects
     """
-    speed_drpdown_xpath = '//select[@id="speed"]'
-    files_drpdown_xpath = '//select[@id="files"]'
-    number_drpdown_xpath = '//select[@name="number"]'
-    products_drpdown_xpath = '//select[@name="products"]'
-    animals_drpdown_xpath = '//select[@name="animals"]'
+    speed_drpdown_xpath = '//select[@name="speed"]//following::option[3]'
+    files_drpdown_xpath = '//select[@name="files"]//option[@value="3"]'
+    number_drpdown_xpath = '//select[@name="number"]//option[2]'
+    products_drpdown_xpath = '//select[@name="products"]//option[@value="Apple"]'
+    animals_drpdown_xpath = '//select[@name="animals"]//option[@value="babycat"]'
     besttime_timeto_contact_drpdown_xpath = '//select[@name="RESULT_RadioButton-9"]/option[@value="Radio-2"]'
 
 class AdvancedEvents:

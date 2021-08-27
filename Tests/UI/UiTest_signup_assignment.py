@@ -35,17 +35,18 @@ cMethods.click_on_button(dd_objects.besttime_timeto_contact_drpdown_xpath)
 
 cMethods.click_on_inputs_for_send_keys(sign_objects.choose_files_xpath, 'F:\python files\selenium files\photos\ladakh_mountains.jpg')
 
-cMethods.scrollUp()
+#cMethods.scrollUp()
 cMethods.click_on_inputs_for_send_keys(dd_objects.speed_drpdown_xpath, Automate_creds["speed"])
 cMethods.click_on_inputs_for_send_keys(dd_objects.files_drpdown_xpath, Automate_creds["file"])
 cMethods.click_on_inputs_for_send_keys(dd_objects.number_drpdown_xpath, Automate_creds["number"])
 cMethods.click_on_inputs_for_send_keys(dd_objects.animals_drpdown_xpath, Automate_creds["animal"])
 cMethods.click_on_inputs_for_send_keys(dd_objects.products_drpdown_xpath, Automate_creds["product"])
 
-cMethods.click_on_button(sign_objects.signup_submit_xpath)
+cMethods.click_on_button(sign_objects.signup_submit_xpath)a
 
 time.sleep(3)
 cMethods.close_browser()
+
 
 
 

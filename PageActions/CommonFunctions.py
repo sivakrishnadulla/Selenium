@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
+import requests
 
 #from webdriver_manager.chrome import ChromeDriverManager
 import time
@@ -98,6 +99,22 @@ class Commonfunctions:
         """
         self.browser.close()
 
+    def element_find(self, xpath):
+        """
+
+        :param xpath:
+        :return:
+        """
+        self.browser.find_element(By.XPATH, xpath)
+
+    def elements_find(self,  xpath):
+        """
+
+        :param xpath:
+        :return:
+        """
+        self.browser.find_elements(By.XPATH, xpath)
+
     def move_element(self, xpath, x_offset, y_offset):
         """
 
@@ -154,6 +171,13 @@ class Commonfunctions:
         """
         change_window = self.browser.window_handles[tab_number]
         self.browser.switch_to.window(change_window)
+    def clear_field(self, xpath):
+        """
+
+        :param xpath:
+        :return:
+        """
+        self.browser.find_element(By.XPATH, xpath).clear()
 
     def double_click(self, xpath):
         """
@@ -161,8 +185,9 @@ class Commonfunctions:
         :param xpath: the object where the double click operation has to be done
         :return: it will click two times in the particular object or element
         """
+        double = self.browser.find_element(By.XPATH, xpath)
         action_chains = ActionChains(self.browser)
-        action_chains.double_click(xpath).perform()
+        action_chains.double_click(double).perform()
 
     def slider_element(self, source, x_offset, y_offset):
         """
@@ -183,6 +208,9 @@ class Commonfunctions:
             self.browser.switch_to.frame(self.browser.find_element_by_xpath(xpath))
         except NoSuchElementException:
             raise Exception("No element found")
+
+
+
 
 
 

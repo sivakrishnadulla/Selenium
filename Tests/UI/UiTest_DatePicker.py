@@ -21,8 +21,8 @@ cMethods.alerts_browser_accept()
 time.sleep(2)
 
 cMethods.click_on_button(search_objects.datepicker_xpath)
-month_year_title = cMethods.browser.find_element(By.CLASS_NAME, "ui-datepicker-title").text
-dates_in_month = cMethods.browser.find_elements(By.XPATH, '//table[@class="ui-datepicker-calendar"]//a')
+month_year_title = cMethods.element_find(search_objects.datepicker_title_xpath)
+dates_in_month = cMethods.elements_find(search_objects.no_of_dates_xpath)
 
 for dateitem in dates_in_month:
     date = dateitem.text
@@ -31,7 +31,7 @@ for dateitem in dates_in_month:
         dateitem.click()
         break
 
-print(month_year_title) #August 2021
+print(month_year_title.text) #August 2021
 month = month_year_title.split(" ")[0].strip()
 year = month_year_title.split(" ")[1].strip()
 #print(month)
