@@ -7,7 +7,7 @@ cFunctions = ApiTestFunctions()
 mydata = open("data.json", "r").read()
 
 # POST method for creating a user
-create_user = cFunctions.post_method("https://reqres.in/api/users", data=json.loads(mydata))
+create_user = cFunctions.post_method(url="https://reqres.in/api/users", data=json.loads(mydata))
 print(create_user.status_code)
 #create_user_json = create_user.json()
 #print(create_user_json["name"])
@@ -19,7 +19,7 @@ payload_register = {
     "password": "python"
     }
 
-register_email = cFunctions.post_method("https://reqres.in/api/register", data=payload_register)
+register_email = cFunctions.post_method(url="https://reqres.in/api/register", data=payload_register)
 print(register_email.url)
 print(register_email.status_code)
 print(register_email.content)
@@ -28,7 +28,7 @@ print(register_email.content)
 payload_unregister = {
     "email": "krishna@fife"
     }
-unregister_email = cFunctions.post_method("https://reqres.in/api/register", data=payload_unregister)
+unregister_email = cFunctions.post_method(url="https://reqres.in/api/register", data=payload_unregister)
 print(unregister_email.status_code)
 print(unregister_email.cookies)
 
