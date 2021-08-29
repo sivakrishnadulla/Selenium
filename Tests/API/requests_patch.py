@@ -9,4 +9,4 @@ payload = {
     }
 
 # PATCH method to update data
-cFunctions.patch_method("https://reqres.in/api/users/2", data=payload)
+data = cFunctions.patch_method("https://reqres.in/api/users/2", data=payload)

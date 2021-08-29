@@ -9,4 +9,5 @@ payload = {
     }
 
 # PUT method to update records
-cFunctions.put_method("https://reqres.in/api/users/2", data=payload)
+records = cFunctions.put_method(url="https://reqres.in/api/users/2", data=payload)
+print(records.status_code)
